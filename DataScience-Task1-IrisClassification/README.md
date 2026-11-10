@@ -69,35 +69,10 @@ Setosa est parfaitement classée par les deux modèles. La seule erreur, commise
 
 ## Conclusion
 
-KNN obtient le meilleur score sur ce découpage, mais l'écart avec l'arbre est d'une seule fleur sur 30. Avec un test aussi petit et un seul découpage, cette différence n'est pas assez solide pour désigner un vainqueur définitif. (Ajoute ici les moyennes de ta validation croisée.)
-
-## Lancer le projet
-
-1. Créer et activer un environnement virtuel :
-   ```
-   python -m venv .venv
-   .venv\Scripts\Activate.ps1
-   ```
-2. Installer les dépendances : `pip install -r requirements.txt`
-3. Ouvrir `iris_classification.ipynb` et exécuter toutes les cellules
-
-## Structure du dossier
-
-```
-DataScience-Task1-IrisClassification/
-├── iris_classification.ipynb
-├── README.md
-├── requirements.txt
-└── images/
-    ├── pairplot.png
-    ├── boxplots.png
-    └── confusion_matrices.png
-```
-
-## Outils
+KNN obtient le meilleur score sur ce découpage, mais l'écart avec l'arbre est d'une seule fleur sur 30. 
 
 Python, pandas, NumPy, scikit-learn, matplotlib, seaborn, Jupyter Notebook
 
 ## Auteur
 
-Ton Prénom MOUTCHI MARIAMNE, www.linkedin.com/in/mariamne-adélaïde-moutchi-a5b187245
+MOUTCHI MARIAMNE, www.linkedin.com/in/mariamne-adélaïde-moutchi-a5b187245
