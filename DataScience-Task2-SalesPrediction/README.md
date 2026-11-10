@@ -9,7 +9,7 @@
 Une entreprise investit dans la publicité sur trois canaux : la **télévision**, la **radio** et le **journal**. Elle veut savoir combien de ventes elle peut espérer selon ses budgets, et surtout quel canal compte le plus. Un responsable marketing dispose d'un budget limité : identifier les canaux les plus liés aux ventes lui permet de décider où investir et quels postes réduire.
 
 ### Le type de tâche
-Il s'agit d'un problème de **régression supervisée** : le modèle apprend à partir d'exemples connus (budgets et ventes observées) pour prédire une **valeur numérique**, les ventes. Contrairement à la classification de la Tâche 1, on ne prédit pas une catégorie mais un nombre. On garde 20 % des données de côté (jeu de test) pour évaluer le modèle sur des données qu'il n'a jamais vues.
+Il s'agit d'un problème de **régression supervisée** : le modèle apprend à partir d'exemples connus (budgets et ventes observées) pour prédire une **valeur numérique**, les ventes.
 
 ### Ce qu'on cherche à savoir
 - Les budgets publicitaires sont-ils liés aux ventes ?
@@ -76,7 +76,7 @@ Les deux modèles donnent le même classement : **TV > radio >> journal**. Les c
 ![Importance des variables](captures/importance_canaux.png)
 
 ### Analyse des résidus
-Les erreurs du Random Forest sont réparties de part et d'autre de zéro, sans courbe nette : elles sont globalement aléatoires. Le modèle tend toutefois à sous-estimer légèrement les ventes les plus élevées. Avec 40 observations de test, cette tendance reste à confirmer.
+Les erreurs du Random Forest sont réparties de part et d'autre de zéro, sans courbe nette : elles sont globalement aléatoires. Le modèle tend toutefois à sous-estimer légèrement les ventes les plus élevées. 
 
 ![Résidus du Random Forest](captures/residus.png)
 
