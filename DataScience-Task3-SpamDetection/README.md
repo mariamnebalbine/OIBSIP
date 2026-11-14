@@ -126,16 +126,12 @@ Il faut cependant l'équilibrer avec la precision : bloquer un message légitime
 
 La **régression logistique équilibrée** est retenue : elle obtient la meilleure accuracy (0,980), le meilleur recall (0,95) et le meilleur F1-score (0,92). Pour un filtre anti-spam, laisser passer des messages frauduleux est le risque principal. Naive Bayes reste préférable si l'on veut éviter à tout prix de bloquer un message légitime.
 
-**Limites** : un seul découpage, 131 spams en test, deux modèles comparés sur le même jeu de test, et un jeu de données ancien issu de sources différentes.
 
-## Bonus : nuages de mots
+## nuages de mots
 
 ![Nuages de mots spam et ham](images/wordclouds.png)
 
 Le vocabulaire du spam (`free`, `claim`, `win`, `prize`, `urgent`, tarifs et numéros surtaxés) diffère nettement de celui des messages légitimes (conversation courante : `go`, `come`, `love`, `ok`). Certains mots, comme `call`, apparaissent dans les deux classes : la fréquence seule ne suffit pas, d'où l'intérêt du TF-IDF et du modèle.
-
-Les termes `gt` et `lt` du ham sont des résidus d'encodage HTML, et le stemming tronque certains mots (`mobil`, `servic`).
-
 
 ## Outils
 
