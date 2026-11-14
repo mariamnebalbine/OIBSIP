@@ -18,8 +18,7 @@ Il s'agit d'une **classification binaire de texte** (traitement du langage natur
 
 ### Les modèles comparés
 - **Multinomial Naive Bayes** : modèle classique du texte, qui estime la probabilité d'un message d'être spam d'après les mots qu'il contient.
-- **Régression logistique** : modèle linéaire qui attribue un poids à chaque mot.
-- **Régression logistique `balanced`** : même modèle, mais les erreurs sur la classe spam (plus rare) sont davantage pénalisées.
+- **Régression logistique** (`class_weight="balanced"`) : modèle linéaire qui attribue un poids à chaque mot. L'option `balanced` pénalise davantage les erreurs sur la classe spam, plus rare.
 
 ### Les métriques utilisées
 - **Accuracy** : proportion de messages bien classés.
@@ -98,16 +97,16 @@ Chaque message passe par cinq étapes :
 
 ## Résultats
 
-Les trois modèles sont évalués sur le même jeu de test (1 033 messages, dont 131 spams). Les métriques portent sur la classe spam.
+Les deux modèles sont évalués sur le même jeu de test (1 033 messages, dont 131 spams). Les métriques portent sur la classe spam.
 
-| Métrique | Naive Bayes | Régression logistique | Régression logistique `balanced` |
-|---|---|---|---|
-| Accuracy | 0,972 | 0,965 | **0,980** |
-| Precision | **1,00** | 0,98 | 0,89 |
-| Recall | 0,78 | 0,74 | **0,95** |
-| F1-score | 0,88 | 0,84 | **0,92** |
-| Faux positifs (ham bloqués) | 0 | 2 | 15 |
-| Faux négatifs (spams non détectés) | ≈ 29 | 34 | 6 |
+| Métrique | Naive Bayes | Régression logistique (`balanced`) |
+|---|---|---|
+| Accuracy | 0,972 | **0,980** |
+| Precision | **1,00** | 0,89 |
+| Recall | 0,78 | **0,95** |
+| F1-score | 0,88 | **0,92** |
+| Faux positifs (ham bloqués) | 0 | 15 |
+| Faux négatifs (spams non détectés) | ≈ 29 | 6 |
 
 ### Matrices de confusion
 
@@ -115,10 +114,7 @@ Les trois modèles sont évalués sur le même jeu de test (1 033 messages, dont
 
 ![Matrice de confusion : régression logistique](images/confusion_lr.png)
 
-![Matrice de confusion : régression logistique équilibrée](images/confusion_lr_balanced.png)
-
-### Effet de `class_weight="balanced"`
-Le nombre de spams non détectés passe de 34 à 6 (recall 0,95), au prix de 13 messages légitimes bloqués en plus (15 faux positifs au lieu de 2, precision 0,89). Le modèle est moins prudent, car les erreurs sur la classe spam, plus rare, sont davantage pénalisées.
+Naive Bayes ne bloque aucun message légitime mais laisse passer environ un spam sur cinq. La régression logistique équilibrée détecte 125 spams sur 131, au prix de 15 messages légitimes bloqués.
 
 ## Pourquoi le recall est important pour détecter le spam
 
@@ -130,15 +126,20 @@ Il faut cependant l'équilibrer avec la precision : bloquer un message légitime
 
 La **régression logistique équilibrée** est retenue : elle obtient la meilleure accuracy (0,980), le meilleur recall (0,95) et le meilleur F1-score (0,92). Pour un filtre anti-spam, laisser passer des messages frauduleux est le risque principal. Naive Bayes reste préférable si l'on veut éviter à tout prix de bloquer un message légitime.
 
+**Limites** : un seul découpage, 131 spams en test, deux modèles comparés sur le même jeu de test, et un jeu de données ancien issu de sources différentes.
 
-## nuages de mots
+## Bonus : nuages de mots
 
 ![Nuages de mots spam et ham](images/wordclouds.png)
 
 Le vocabulaire du spam (`free`, `claim`, `win`, `prize`, `urgent`, tarifs et numéros surtaxés) diffère nettement de celui des messages légitimes (conversation courante : `go`, `come`, `love`, `ok`). Certains mots, comme `call`, apparaissent dans les deux classes : la fréquence seule ne suffit pas, d'où l'intérêt du TF-IDF et du modèle.
+
+Les termes `gt` et `lt` du ham sont des résidus d'encodage HTML, et le stemming tronque certains mots (`mobil`, `servic`).
+
+
 ## Outils
 
-Python, pandas, NumPy, scikit-learn, NLTK, matplotlib, seaborn, Jupyter Notebook
+Python, pandas, NumPy, scikit-learn, NLTK, WordCloud, matplotlib, seaborn, Jupyter Notebook
 
 ## Auteur
 
