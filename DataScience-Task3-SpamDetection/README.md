@@ -28,8 +28,8 @@ Il s'agit d'une **classification binaire de texte** (traitement du langage natur
 - **Matrice de confusion** : montre les faux positifs (message légitime bloqué) et les faux négatifs (spam qui passe).
 
 ## Dataset
+**Source** : [SMS Spam Collection Dataset sur Kaggle](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset) (jeu de données original : [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection))
 
-**Source** : [SMS Spam Collection Dataset sur Kaggle](LIEN_KAGGLE) (jeu de données original : [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection))
 
 ### Contexte
 La SMS Spam Collection est un ensemble de messages SMS étiquetés, collectés pour la recherche sur le spam par SMS. Elle contient 5 574 messages en anglais, identifiés comme **ham** (légitime) ou **spam**. Le fichier `spam.csv` utilisé ici en contient 5 572.
